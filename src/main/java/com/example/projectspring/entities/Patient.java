@@ -2,9 +2,13 @@ package com.example.projectspring.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "patients")
 public class Patient {
     @Id
@@ -14,7 +18,13 @@ public class Patient {
     private String numberCard;
     private String phone;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Appointment appointment;
+    @OneToMany(mappedBy = "patient")
+    private List<Appointment> appointment;
+
+    public Patient(Long id,String name,String numberCard,String phone){
+        this.id = id;
+        this.name = name;
+        this.numberCard = numberCard;
+        this.phone = phone;
+    }
 }

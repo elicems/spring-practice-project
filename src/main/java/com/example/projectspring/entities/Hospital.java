@@ -13,4 +13,6 @@ public class Hospital {
     private String name;
     private String address;
 
+    @OneToOne(mappedBy = "hospital",cascade = CascadeType.ALL)
+    private Appointment appointment;
 }

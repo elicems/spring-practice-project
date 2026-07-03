@@ -11,4 +11,6 @@ public class Doctor {
     private String name;
     private String crm;
 
+    @OneToOne(mappedBy = "doctor",cascade = CascadeType.ALL)
+    private Appointment appointment;
 }

@@ -13,10 +13,17 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "patient")
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     private Instant appointmentDate;
+
+    @OneToOne
+    @MapsId
     private Hospital hospital;
+
+    @OneToOne
+    @MapsId
     private Doctor doctor;
 }
