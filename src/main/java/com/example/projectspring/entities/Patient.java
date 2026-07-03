@@ -13,4 +13,8 @@ public class Patient {
     private String name;
     private String numberCard;
     private String phone;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Appointment appointment;
 }
