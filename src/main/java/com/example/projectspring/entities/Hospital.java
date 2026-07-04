@@ -1,5 +1,6 @@
 package com.example.projectspring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Hospital {
     private String address;
 
     @OneToMany(mappedBy = "hospital")
+    @JsonIgnore
     private List<Appointment> appointment = new ArrayList<>();
 
     public Hospital(Long id, String name, String address) {
