@@ -13,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.time.Instant;
 import java.util.Arrays;
 
 @Configuration
@@ -43,6 +44,11 @@ public class ConfigTest implements CommandLineRunner {
         Hospital h2 = new Hospital(null,"Upa ermelino matarrapido","Travessa dos anzois, 666");
 
         hospitalRepository.saveAll(Arrays.asList(h1,h2));
+
+        Appointment ap1 = new Appointment(null,p1, Instant.parse("2026-07-03T21:40:00Z"),h2,d1);
+        Appointment ap2 = new Appointment(null,p2, Instant.parse("2026-07-02T18:30:00Z"),h1,d2);
+
+        appointmentRepository.saveAll(Arrays.asList(ap1,ap2));
 
     }
 }

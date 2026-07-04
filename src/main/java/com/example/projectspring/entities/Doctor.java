@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -15,12 +18,12 @@ public class Doctor {
     private String name;
     private String crm;
 
+    @OneToMany(mappedBy = "doctor")
+    private List<Appointment> appointment = new ArrayList<>();
+
     public Doctor(Long id, String name, String crm) {
         this.id = id;
         this.name = name;
         this.crm = crm;
     }
-
-    @OneToOne(mappedBy = "doctor",cascade = CascadeType.ALL)
-    private Appointment appointment;
 }

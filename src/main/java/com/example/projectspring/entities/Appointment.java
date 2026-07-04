@@ -1,12 +1,15 @@
 package com.example.projectspring.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "appointments")
 public class Appointment {
     @Id
@@ -17,13 +20,22 @@ public class Appointment {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT")
     private Instant appointmentDate;
 
-    @OneToOne
-    @MapsId
+    @ManyToOne
+    @JoinColumn(name = "hospital_id")
     private Hospital hospital;
 
-    @OneToOne
-    @MapsId
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
+
+    public Appointment(Long id, Patient patient, Instant appointmentDate, Hospital hospital, Doctor doctor) {
+        this.id = id;
+        this.patient = patient;
+        this.appointmentDate = appointmentDate;
+        this.hospital = hospital;
+        this.doctor = doctor;
+    }
 }
