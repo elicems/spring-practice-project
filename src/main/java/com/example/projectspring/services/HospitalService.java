@@ -2,6 +2,7 @@ package com.example.projectspring.services;
 
 import com.example.projectspring.entities.Hospital;
 import com.example.projectspring.repositories.HospitalRepository;
+import com.example.projectspring.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,6 @@ public class HospitalService {
     }
     public Hospital findById(Long id){
         Optional<Hospital> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }
