@@ -18,14 +18,16 @@ public class Hospital {
     private Long id;
     private String name;
     private String address;
+    private Double taxService;
 
     @OneToMany(mappedBy = "hospital")
     @JsonIgnore
     private List<Appointment> appointment = new ArrayList<>();
 
-    public Hospital(Long id, String name, String address) {
+    public Hospital(Long id, String name, String address,Double taxService) {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.taxService = taxService;
     }
 }

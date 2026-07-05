@@ -20,4 +20,5 @@ public class AppointmentService {
         Optional<Appointment> obj = repository.findById(id);
         return obj.get();
     }
+
 }

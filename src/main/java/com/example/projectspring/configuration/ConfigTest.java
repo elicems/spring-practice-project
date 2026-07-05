@@ -35,13 +35,13 @@ public class ConfigTest implements CommandLineRunner {
 
         patientRepository.saveAll(Arrays.asList(p1,p2));
 
-        Doctor d1 = new Doctor(null,"Joseli nho","2662662");
-        Doctor d2 = new Doctor(null,"Piconha fres","2454322");
+        Doctor d1 = new Doctor(null,"Joseli nho","2662662",220.0);
+        Doctor d2 = new Doctor(null,"Piconha fres","2454322",120.0);
 
         doctorRepository.saveAll(Arrays.asList(d1,d2));
 
-        Hospital h1 = new Hospital(null,"Hospital das cruzes","Rua pi cole, 266");
-        Hospital h2 = new Hospital(null,"Upa ermelino matarrapido","Travessa dos anzois, 666");
+        Hospital h1 = new Hospital(null,"Hospital das cruzes","Rua pi cole, 266",12.0);
+        Hospital h2 = new Hospital(null,"Upa ermelino matarrapido","Travessa dos anzois, 666",10.0);
 
         hospitalRepository.saveAll(Arrays.asList(h1,h2));
 

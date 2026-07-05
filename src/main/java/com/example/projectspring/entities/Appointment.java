@@ -38,4 +38,15 @@ public class Appointment {
         this.hospital = hospital;
         this.doctor = doctor;
     }
+    public Double getSubTotal(){
+        Double taxService = this.doctor.getConsultationPrice() * (this.hospital.getTaxService()/100);
+        return this.doctor.getConsultationPrice() + taxService;
+    }
+    public Double getTotal(Patient p){
+        Double sum = 0.0;
+        for (Appointment a : p.getAppointment()){
+            sum += a.getSubTotal();
+        }
+        return sum;
+    }
 }

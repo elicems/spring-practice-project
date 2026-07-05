@@ -18,14 +18,16 @@ public class Doctor {
     private Long id;
     private String name;
     private String crm;
+    private Double consultationPrice;
 
     @OneToMany(mappedBy = "doctor")
     @JsonIgnore
     private List<Appointment> appointment = new ArrayList<>();
 
-    public Doctor(Long id, String name, String crm) {
+    public Doctor(Long id, String name, String crm,Double consultationPrice) {
         this.id = id;
         this.name = name;
         this.crm = crm;
+        this.consultationPrice = consultationPrice;
     }
 }
